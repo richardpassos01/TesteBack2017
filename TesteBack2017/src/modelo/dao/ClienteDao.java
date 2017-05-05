@@ -56,36 +56,36 @@ public class ClienteDao {
             
                 //Regra Query: Saldo maior que 560 e o campo id_customer de 1500 a 2700
             stmt=con.prepareStatement("select cast(avg(vl_total) as decimal(10,2)) as Media from tb_customer_account where vl_total>2 and id_customer between 1500 and 2700");            
-             rs = stmt.executeQuery();             
+            rs = stmt.executeQuery();             
                 
                 //Regra Query: Media final do saldo de todos os clientes
             stmt2=con.prepareStatement("select cast(avg(vl_total) as decimal(10,2)) as MediaFinal from tb_customer_account");
-             rs2 = stmt2.executeQuery();
+            rs2 = stmt2.executeQuery();
                 
                 //Regra Query: Nome dos clientes de id de 1500 a 2700 em ordem descrescente
             stmt3=con.prepareStatement("select nm_customer as Clientes from tb_customer_account where id_customer between 1500 and 2700  order by vl_total DESC");
-             rs3 = stmt3.executeQuery();
+            rs3 = stmt3.executeQuery();
                 
                 //Insere valores da query 1 no atributo Media do cliente.
-              while(rs.next()){
+            while(rs.next()){
                  Cliente cli=new Cliente();                 
                  cli.setMedia(rs.getDouble("Media"));
                  dadosCliente.add(cli);                 
-              }
+            }
               
                 //Insere valores da query 2 no atributo Media do cliente.
-              while(rs2.next()){
+            while(rs2.next()){
                   Cliente cli=new Cliente();                                    
                   cli.setMediaFinal(rs2.getDouble("MediaFinal"));
                   dadosCliente.add(cli);               
-              }
+            }
              
                 //Insere valores da query 3 no atributo Media do cliente.
-              while(rs3.next()){
+            while(rs3.next()){
                   Cliente cli=new Cliente();                  
                   cli.setClientes(rs3.getString("Clientes"));
                   dadosCliente.add(cli);                                    
-              }
+            }
                                                 
               //Valida se foi realizado a consulta 
         } catch (SQLException ex) {
