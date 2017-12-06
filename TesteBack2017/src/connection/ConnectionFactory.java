@@ -14,7 +14,7 @@ public class ConnectionFactory {
    private static final String DRIVERNAME = "oracle.jdbc.driver.OracleDriver";
    private static final String URL  = "jdbc:oracle:thin:@localhost:1521:XE";  
    private static final String USERNAME = "system";  
-   private static final String PASSWORD = "riihr1ch4rd";  
+   private static final String PASSWORD = "123456";  
    
      //metodo de validação de conexão
    public static Connection getConnection(){   
